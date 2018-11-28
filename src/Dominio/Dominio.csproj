@@ -51,5 +51,11 @@
   <ItemGroup>
     <Folder Include="Abstracao\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infra\Infra.csproj">
+      <Project>{7df189ce-0fe5-4ac1-a3ec-4c6a76c04741}</Project>
+      <Name>Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E62CA49D-203B-4650-9DF0-37260C93D8EF}</ProjectGuid>
+    <ProjectGuid>{7DF189CE-0FE5-4AC1-A3EC-4C6A76C04741}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MPSC.PlenoSoft.PlenoControle.AplicacaoAplicacao</RootNamespace>
-    <AssemblyName>MPSC.PlenoSoft.PlenoControle.Aplicacao</AssemblyName>
+    <RootNamespace>MPSC.PlenoSoft.PlenoControle.Infra</RootNamespace>
+    <AssemblyName>MPSC.PlenoSoft.PlenoControle.Infra</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,9 +32,6 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,23 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abstracao\" />
-    <Folder Include="CasosDeUso\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{a0d13a8c-4e8e-414f-a5a0-29bd943c79e5}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infra\Infra.csproj">
-      <Project>{7df189ce-0fe5-4ac1-a3ec-4c6a76c04741}</Project>
-      <Name>Infra</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
