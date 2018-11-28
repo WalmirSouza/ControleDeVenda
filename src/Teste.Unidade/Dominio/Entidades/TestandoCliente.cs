@@ -3,7 +3,7 @@ using MPSC.PlenoSoft.PlenoControle.Dominio.Entidades;
 using MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Abstracao;
 using System;
 
-namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio
+namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 {
 	[TestClass]
 	public class TestandoCliente
