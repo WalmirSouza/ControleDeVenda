@@ -5,7 +5,7 @@ using System;
 
 namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 {
-	[TestClass]
+    [TestClass]
 	public class TestandoCliente
 	{
 		[TestMethod]
@@ -96,7 +96,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 		}
 
         [TestMethod]
-        public void QuandoLocalizacaoFoirVaziaOuNula_DeveRetornarErro()
+        public void QuandoLocalizacaoForVaziaOuNula_DeveRetornarErro()
         {
             var cliente = new Cliente
             {
@@ -107,6 +107,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
             var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
             Assert.IsNotNull(ex);
             Assert.AreEqual("Localização não Deve Ser Nula!", ex.Message);
+            
         }
     }
 }

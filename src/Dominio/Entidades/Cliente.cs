@@ -33,6 +33,8 @@ namespace MPSC.PlenoSoft.PlenoControle.Dominio.Entidades
 			if (CPF.Length != 11)
 				throw new ApplicationException("Quantidade de Dígitos de CPF deve Ser Igual a 11!");
 
+            if (string.IsNullOrWhiteSpace(Localizacao))
+                throw new ApplicationException("Localização não Deve Ser Nula!");
 
 			return true;
 		}

@@ -70,6 +70,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
             var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
             Assert.IsNotNull(ex);
             Assert.AreEqual("Número Não Deve Ser Nulo ou Branco!", ex.Message);
+
         }
 
         [TestMethod]
