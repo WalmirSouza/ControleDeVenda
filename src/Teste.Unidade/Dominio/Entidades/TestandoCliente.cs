@@ -94,5 +94,19 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			Assert.IsNotNull(ex);
 			Assert.AreEqual("Quantidade de Dígitos de CPF deve Ser Igual a 11!", ex.Message);
 		}
-	}
+
+        [TestMethod]
+        public void QuandoLocalizacaoFoirVaziaOuNula_DeveRetornarErro()
+        {
+            var cliente = new Cliente
+            {
+                Nome = "Jorge Luiz",
+                CPF = "01358373752",
+                Localizacao = ""
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+            Assert.IsNotNull(ex);
+            Assert.AreEqual("Localização não Deve Ser Nula!", ex.Message);
+        }
+    }
 }
