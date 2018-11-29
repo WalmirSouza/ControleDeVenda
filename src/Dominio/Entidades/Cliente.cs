@@ -13,41 +13,28 @@ namespace MPSC.PlenoSoft.PlenoControle.Dominio.Entidades
 		public bool EhValido()
 		{
 			if (string.IsNullOrWhiteSpace(Nome))
-			{
 				throw new ApplicationException("Nome não Pode ser Branco ou Nulo!");
-			}
-			else if (Nome.Length < 6)
-			{
+
+			if (Nome.Length < 6)
 				throw new ApplicationException("Nome Deve ter mais de 6 Cadacteres!");
-			}
-			else if (Regex.Replace(Nome, "[!@#$%¨&*()+_}^{`:><?/;.,~´=-]", "").Length != Nome.Length)
-			{
+
+			if (Regex.Replace(Nome, "[!@#$%¨&*()+_}^{`:><?/;.,~´=-]", "").Length != Nome.Length)
 				throw new ApplicationException("Nome Não Deve Conter Cadacteres Especiais!");
-			}
-			else if (Regex.Replace(Nome, "[0-9]", "").Length != Nome.Length)
-			{
+
+			if (Regex.Replace(Nome, "[0-9]", "").Length != Nome.Length)
 				throw new ApplicationException("Nome Não Deve Conter Numeros!");
-			}
-			else if (string.IsNullOrWhiteSpace(CPF))
-			{
+
+			if (string.IsNullOrWhiteSpace(CPF))
 				throw new ApplicationException("CPF não Deve ser Nulo!");
-			}
-			else if (Regex.Replace(CPF, "[0-9]", "").Length > 0)
-			{
+
+			if (Regex.Replace(CPF, "[0-9]", "").Length > 0)
 				throw new ApplicationException("CPF deve conter apenas Numeros!");
-			}
-			else if (CPF.Length != 11)
-			{
+
+			if (CPF.Length != 11)
 				throw new ApplicationException("Quantidade de Dígitos de CPF deve Ser Igual a 11!");
-			}
-            else if (string.IsNullOrWhiteSpace(Localizacao))
-            {
-                throw new ApplicationException("Localização não Deve Ser Nula!");
-            }
+
 
 			return true;
-
-
 		}
 	}
 }
