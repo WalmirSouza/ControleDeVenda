@@ -1,16 +1,16 @@
-﻿using System;
+﻿using MPSC.PlenoSoft.PlenoControle.Dominio.Abstracao;
+using System;
 using System.Text.RegularExpressions;
 
 namespace MPSC.PlenoSoft.PlenoControle.Dominio.Entidades
 {
-	public class Cliente
+	public class Cliente : Entidade
 	{
-		public int Id { get; set; }
 		public string Nome { get; set; }
 		public string CPF { get; set; }
 		public string Localizacao { get; set; }
 
-		public bool EhValido()
+		protected override Boolean EhValido()
 		{
 			if (string.IsNullOrWhiteSpace(Nome))
 				throw new ApplicationException("Nome não Pode ser Branco ou Nulo!");

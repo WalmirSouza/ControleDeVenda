@@ -15,7 +15,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			{
 				Nome = ""
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("Nome não Pode ser Branco ou Nulo!", ex.Message);
 		}
 
@@ -26,7 +26,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			{
 				Nome = "AAAAA"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("Nome Deve ter mais de 6 Cadacteres!", ex.Message);
 		}
 
@@ -37,7 +37,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			{
 				Nome = "AAAAA@%$"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("Nome Não Deve Conter Cadacteres Especiais!", ex.Message);
 		}
 
@@ -48,7 +48,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			{
 				Nome = "AAAAA123"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("Nome Não Deve Conter Numeros!", ex.Message);
 		}
 
@@ -60,7 +60,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = "Jorge Luiz",
 				CPF = ""
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("CPF não Deve ser Nulo!", ex.Message);
 		}
 
@@ -72,7 +72,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = "Jorge Luiz",
 				CPF = "123XXX"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("CPF deve conter apenas Numeros!", ex.Message);
 		}
 
@@ -84,7 +84,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = "Jorge Luiz",
 				CPF = "0135837375"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("Quantidade de Dígitos de CPF deve Ser Igual a 11!", ex.Message);
 		}
 
@@ -97,9 +97,8 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				CPF = "01358373752",
 				Localizacao = ""
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.Validar());
 			Assert.AreEqual("Localização não Deve Ser Nula!", ex.Message);
-
 		}
 	}
 }

@@ -15,7 +15,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			{
 				Logradouro = ""
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
 			Assert.AreEqual("Logradouro Não Deve Ser Nulo ou Branco!", ex.Message);
 		}
 
@@ -26,7 +26,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			{
 				Logradouro = "1234567890123456"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
 			Assert.AreEqual("Logradouro deve entre de 1 a 15 Caracteres!", ex.Message);
 		}
 
@@ -38,7 +38,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Logradouro = "123456789012345",
 				Numero = ""
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
 			Assert.AreEqual("Número Não Deve Ser Nulo ou Branco!", ex.Message);
 		}
 
@@ -50,7 +50,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Logradouro = "123456789012345",
 				Numero = "1234567890123456"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
 			Assert.AreEqual("Numero deve entre de 1 a 15 Caracteres!", ex.Message);
 		}
 
@@ -63,7 +63,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Numero = "123445",
 				Bairro = ""
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
 			Assert.AreEqual("Bairro Não Deve Ser Nulo ou Branco!", ex.Message);
 		}
 
@@ -75,7 +75,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Logradouro = "123456789012345",
 				Numero = "1234567890123456"
 			};
-			var ex = Asserts.Throws<ApplicationException>(() => endereco.EhValido());
+			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
 			Assert.AreEqual("Numero deve entre de 1 a 15 Caracteres!", ex.Message);
 		}
 	}

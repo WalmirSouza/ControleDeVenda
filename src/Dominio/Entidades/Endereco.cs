@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MPSC.PlenoSoft.PlenoControle.Dominio.Abstracao;
+using System;
 
 namespace MPSC.PlenoSoft.PlenoControle.Dominio.Entidades
 {
-	public class Endereco
+	public class Endereco : Entidade
 	{
-		public int Id { get; set; }
 		public string Logradouro { get; set; }
 		public string Numero { get; set; }
 		public string Complemento { get; set; }
@@ -13,7 +13,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Dominio.Entidades
 		public string Estado { get; set; }
 		public string CEP { get; set; }
 
-		public bool EhValido()
+		protected override Boolean EhValido()
 		{
 			if (string.IsNullOrWhiteSpace(Logradouro))
 				throw new ApplicationException("Logradouro Não Deve Ser Nulo ou Branco!");
