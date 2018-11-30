@@ -5,7 +5,7 @@ using System;
 
 namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 {
-    [TestClass]
+	[TestClass]
 	public class TestandoCliente
 	{
 		[TestMethod]
@@ -16,7 +16,6 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = ""
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("Nome não Pode ser Branco ou Nulo!", ex.Message);
 		}
 
@@ -28,7 +27,6 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = "AAAAA"
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("Nome Deve ter mais de 6 Cadacteres!", ex.Message);
 		}
 
@@ -40,7 +38,6 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = "AAAAA@%$"
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("Nome Não Deve Conter Cadacteres Especiais!", ex.Message);
 		}
 
@@ -52,7 +49,6 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Nome = "AAAAA123"
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("Nome Não Deve Conter Numeros!", ex.Message);
 		}
 
@@ -65,7 +61,6 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				CPF = ""
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("CPF não Deve ser Nulo!", ex.Message);
 		}
 
@@ -78,7 +73,6 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				CPF = "123XXX"
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("CPF deve conter apenas Numeros!", ex.Message);
 		}
 
@@ -91,23 +85,21 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				CPF = "0135837375"
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-			Assert.IsNotNull(ex);
 			Assert.AreEqual("Quantidade de Dígitos de CPF deve Ser Igual a 11!", ex.Message);
 		}
 
-        [TestMethod]
-        public void QuandoLocalizacaoForVaziaOuNula_DeveRetornarErro()
-        {
-            var cliente = new Cliente
-            {
-                Nome = "Jorge Luiz",
-                CPF = "01358373752",
-                Localizacao = ""
-            };
-            var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
-            Assert.IsNotNull(ex);
-            Assert.AreEqual("Localização não Deve Ser Nula!", ex.Message);
-            
-        }
-    }
+		[TestMethod]
+		public void QuandoLocalizacaoForVaziaOuNula_DeveRetornarErro()
+		{
+			var cliente = new Cliente
+			{
+				Nome = "Jorge Luiz",
+				CPF = "01358373752",
+				Localizacao = ""
+			};
+			var ex = Asserts.Throws<ApplicationException>(() => cliente.EhValido());
+			Assert.AreEqual("Localização não Deve Ser Nula!", ex.Message);
+
+		}
+	}
 }
