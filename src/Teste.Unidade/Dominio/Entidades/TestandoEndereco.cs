@@ -51,7 +51,7 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 				Numero = "1234567890123456"
 			};
 			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
-			Assert.AreEqual("Numero deve entre de 1 a 15 Caracteres!", ex.Message);
+			Assert.AreEqual("Número deve ter entre de 1 e 15 Caracteres!", ex.Message);
 		}
 
 		[TestMethod]
@@ -73,10 +73,132 @@ namespace MPSC.PlenoSoft.PlenoControle.Teste.Unidade.Dominio.Entidades
 			var endereco = new Endereco
 			{
 				Logradouro = "123456789012345",
-				Numero = "1234567890123456"
-			};
+				Numero = "1234567",
+                Bairro = "1234567890123456"
+            };
 			var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
-			Assert.AreEqual("Numero deve entre de 1 a 15 Caracteres!", ex.Message);
+			Assert.AreEqual("Bairro deve ter entre de 1 e 15 Caracteres!", ex.Message);
 		}
-	}
+
+        [TestMethod]
+        public void QuandoCidadeNuloOuBranco_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = ""
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("Cidade Não Deve Ser Nulo ou Branco!", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoCidadeMaiorQue15Caracteres_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "123123456789012346"
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("Cidade deve ter entre de 1 e 15 Caracteres!", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoEstadoNuloOuBranco_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "1234",
+                Estado = ""
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("Estado Não Deve Ser Nulo ou Branco!", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoEstadoMaiorQue2Caracteres_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "123",
+                Estado = "RJJ"
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("Estado deve ter 2 Caracteres!", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoEstadoConterNumeros_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "123",
+                Estado = "12"
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("Estado só deve conter Letras!", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoCEPNuloOuBranco_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "123",
+                Estado = "RJ",
+                CEP    = ""
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("CEP Não deve ser Nulo", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoCEPConterLetras_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "123",
+                Estado = "RJ",
+                CEP = "1A1A1a1a"
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("CEP Não Pode Conter Letras!", ex.Message);
+        }
+
+        [TestMethod]
+        public void QuandoCEPMenorQue8Digitos_DeveRetornarErro()
+        {
+            var endereco = new Endereco
+            {
+                Logradouro = "123456789012345",
+                Numero = "123456789012345",
+                Bairro = "123",
+                Cidade = "123",
+                Estado = "RJ",
+                CEP = "11"
+            };
+            var ex = Asserts.Throws<ApplicationException>(() => endereco.Validar());
+            Assert.AreEqual("CEP Não Pode Conter Menos de 8 digitos!", ex.Message);
+        }
+    }
 }
